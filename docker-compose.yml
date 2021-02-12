@@ -2,6 +2,7 @@ version: "3.8"
 volumes:
   php-fpm-socket:
   db-store:
+  pma-session-store:
 services:
   app:
     build:
@@ -17,7 +18,6 @@ services:
       - DB_DATABASE=${DB_NAME:-laravel_local}
       - DB_USERNAME=${DB_USER:-phper}
       - DB_PASSWORD=${DB_PASS:-secret}
-
   web:
     build:
       context: .
@@ -41,3 +41,17 @@ services:
       - MYSQL_USER=${DB_USER:-phper}
       - MYSQL_PASSWORD=${DB_PASS:-secret}
       - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
+  pma:
+    image: phpmyadmin/phpmyadmin:5.0.2
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=secret
+    ports:
+      - 8080:80
+    volumes:
+      - pma-session-store:/sessions
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - 8025:8025
