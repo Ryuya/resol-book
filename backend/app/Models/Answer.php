@@ -4,14 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Answer extends Model
 {
     //
     protected $fillable = [
+        "problem_id",
         "title",
         "description",
+        "url",
     ];
 
     /**
@@ -24,9 +27,9 @@ class Answer extends Model
     /**
      * @return BelongsTo
      */
-    public function trouble(): BelongsTo
+    public function problem(): BelongsTo
     {
-        return $this->belongsTo(Trouble::class);
+        return $this->belongsTo(Problem::class);
     }
     /**
      * @return HasMany

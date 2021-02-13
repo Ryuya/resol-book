@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Trouble extends Model
+class Problem extends Model
 {
     //
     protected $fillable = [
@@ -13,13 +13,13 @@ class Trouble extends Model
         "description",
     ];
 
-//    /**
-//     * @return HasOneø
-//     */
-//    public function bestAnswer(): HasOne
-//    {
-//        return $this->hasMany(BestAnswer::class);
-//    }
+    //    /**
+    //     * @return HasOneø
+    //     */
+    //    public function bestAnswer(): HasOne
+    //    {
+    //        return $this->hasMany(BestAnswer::class);
+    //    }
     /**
      * @return HasMany
      */
