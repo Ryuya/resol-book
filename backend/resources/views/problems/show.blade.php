@@ -10,11 +10,12 @@
 </head>
 
 <body>
-    {{ $problem->title }}
-    {{ $problem->description }}
-    <a href="{{ route('answers.create',[$problem]) }}">
-        本で回答する。
-    </a>
+
+    <p>タイトル：{{ $problem->title }}</p>
+    <p>内容：{{ $problem->description }}</p>
+    <p><a href="{{ route('answers.create',[$problem]) }}">
+            本で回答する。
+        </a></p>
     現在の回答
     @foreach ($problem->answers()->get() as $answer)
     <div style="border: 1px solid black">
